@@ -12,10 +12,65 @@
 
 ### Action
 
+Action이란, 우리 어플리케이션에서 발생한 일을 의미합니다. 여기서 중요한건 어플리케이션이라는 단어입니다. 어플리케이션 단위에서 일어난 중요한 일들을 표현하는 것이 Action입니다.
+
+Redux에서 Action이란 아래와 같이 단순 Javascript Object로 표현합니다.
+```javascript
+{
+  "delta": 1000,
+  "payload": {
+    "type": "message",
+    "user": {
+      "id": 1,
+      "user_name": "허근행",
+      "display_name": "돈까스"
+    },
+    "message": {
+      "id": 1,
+      "text": "야호!"
+    }
+  }
+}
+```
+
+어플리케이션에서 일어나는 모든 일들을 Action으로 표현하는 것은, 우리 어플리케이션에서 어떤 일들이 일어나고 어떻게 진행되는지를 이해하는데에 굉장한 도움을 주게 됩니다.
+
 ### Reducers
+
+Reducer라는 개념을 설명하기 전에 우선적으로 `Array.prototype.reduce`에 대해 기억해보세요. 잘 기억이 안나신다면, 문서를 보시고 다시 한번 이해해보세요.
+
+Redux에서의 Reducer는 `Array.prototype.reduce`에서의 콜백 함수(`=== reducer`)와 거의 똑같습니다. 단순 함수입니다. Redux에서 가장 중요한 역할인 Reducer가 존재함이 곧 Redux에 함수형 컨셉이 녹아들어있기도 한 가장 큰 이유입니다.
+```javascript
+function visibilityFilter(state = 'SHOW_ALL', action) {
+  if (action.type === 'SET_VISIBILITY_FILTER') {
+    return action.filter
+  } else {
+    return state
+  }
+}
+```
+
+Reducer는 이전 어플리케이션의 State을 인자로 받고, 우리는 기존 State과 새로운 Action에 대한 정보를 통합하여 새로운 State를 반환해야합니다. 그렇게되면 Redux가 어플리케이션의 State를 업데이트하게 되고, 연결된 컴포넌트들은 새로운 props를 받아 업데이트 됩니다.
 
 ### Store
 
+Store라는 것은 우리 어플리케이션의 State를 보관하는 딱 하나의 보관함입니다. 모든 State는 하나의 Store에서 관리되고 수정됩니다.
+```javascript
+{
+  todos: [{
+    text: 'Eat food',
+    completed: true
+  }, {
+    text: 'Exercise',
+    completed: false
+  }],
+  visibilityFilter: 'SHOW_COMPLETED'
+}
+```
+
 ### Data Flow
 
-### With React
+1. 새로운 Action 발생
+2. Reducer 실행
+3. Store 업데이트
+4. Component 업데이트
