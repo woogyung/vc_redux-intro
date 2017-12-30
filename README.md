@@ -75,7 +75,14 @@ Store라는 것은 우리 어플리케이션의 State를 보관하는 딱 하나
 3. Store 업데이트
 4. Component 업데이트
 
-#### Redux Data Flow Diagrams
+### 그림으로 설명하는 Redux 흐름
+
+- UI 컴포넌트에서 Action을 발생시킵니다. (예, 사용자가 로그인 버튼 클릭)
+- 로그인 관련 액션을 만들어 리덕스 세상에 알립니다.
+- Reducer에 정의해놓은 로그인 액션 관련 Reducer가 호출되고 로그인 관련 State가 새로 생성됩니다.
+- Redux 시스템이 해당 State를 Store에 업데이트 시키고 Store는 change 이벤트를 발생시킵니다.
+- 관련 컴포넌트는 이미 초기 구동시에 리덕스가 해당 change 이벤트에 구독시켜 놓았기 때문에 자동으로 업데이트 됩니다.
+- 상위 컴포넌트가 업데이트되면 하위 컴포넌트들도 자동으로 다시 업데이트 됩니다.
 
 ![Basic Redux Flow 1](https://raw.githubusercontent.com/vanilla-coding/redux-intro/master/diagrams/redux-1.png?token=ADIDL8K1b5oilVSlf_EeNnTMjVkqgn69ks5aUL-jwA%3D%3D)
 
