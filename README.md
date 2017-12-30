@@ -74,3 +74,11 @@ Store라는 것은 우리 어플리케이션의 State를 보관하는 딱 하나
 2. Reducer 실행
 3. Store 업데이트
 4. Component 업데이트
+
+#### Redux Data Flow Diagrams
+
+![Basic Redux Flow 1](https://raw.githubusercontent.com/vanilla-coding/redux-intro/master/diagrams/redux-1.png?token=ADIDL8K1b5oilVSlf_EeNnTMjVkqgn69ks5aUL-jwA%3D%3D)
+
+![Basic Redux Flow 2](https://raw.githubusercontent.com/vanilla-coding/redux-intro/master/diagrams/redux-2.png?token=ADIDL75W7UNM-FCln0wfxARbnAp-zFADks5aUMAawA%3D%3D)
+
+![Basic Redux Flow 3](https://raw.githubusercontent.com/vanilla-coding/redux-intro/master/diagrams/redux-3.png?token=ADIDL2bYsHtvthW54Mf_XN1MV88pDQ--ks5aUMAswA%3D%3D)
