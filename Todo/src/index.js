@@ -13,3 +13,15 @@ render(
   </Provider>,
   document.getElementById('root')
 )
+
+// 1. create store for Todo app
+
+// 2. Usage of react-redux
+
+// 3. Provider
+
+// 4. Container component vs Presentational component
+
+// 5. mapStateToProps
+
+// 6. mapDispatchToProps
