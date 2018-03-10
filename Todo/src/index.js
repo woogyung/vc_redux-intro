@@ -1,16 +1,25 @@
 import React from 'react'
-import { render } from 'react-dom'
-import App from './components/App'
+import ReactDOM from 'react-dom'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './reducers'
+import AppContainer from './containers/AppContainer'
 
-render(
-  <App />,
+const store = createStore(reducer)
+
+ReactDOM.render(
+  <Provider store={store}>
+    <AppContainer />
+  </Provider>,
   document.getElementById('root')
 )
+
+// store.subscribe(render)
 
 // % Key Concepts %
 
 // 1. create store for Todo app
-// 2. Usage of react-redux
+// 2. Usage of react-redux https://redux.js.org/basics/usage-with-react
 // 3. Provider
 // 4. Container component vs Presentational component
 // 5. mapStateToProps

@@ -7,27 +7,38 @@ class App extends React.Component {
     super()
 
     this.state = {
-      todos: []
+      todoText: ''
     }
   }
 
-  onTodoListClick() {
-    console.log('todo list click!')
+  onTodoTextChange(ev) {
+    this.setState({
+      todoText: ev.target.value
+    })
   }
 
   onTodoItemClick() {
     console.log('todo item click!')
   }
 
+  onTodoAdd() {
+    this.props.onTodoAdd(this.state.todoText)
+
+    this.setState({
+      todoText: ''
+    })
+  }
+
   render() {
     return (
       <div>
         <h1>Vanilla Todo List</h1>
-        <TodoList todos={this.state.todos} onTodoClick={this.onTodoListClick.bind(this)} />
+        <input onChange={this.onTodoTextChange.bind(this)} type="text" />
+        <button onClick={this.onTodoAdd.bind(this)}>Add</button>
         {
-          this.state.todos.length &&
-          this.state.todos.map(todo => {
-            return <Todo completed={todo.completed} onClick={this.onTodoItemClick.bind(this)} text={todo.text} />
+          this.props.todos.length &&
+          this.props.todos.map(todo => {
+            return <Todo onDelete={this.props.onTodoDelete} key={todo.id} id={todo.id} completed={todo.completed} onClick={this.onTodoItemClick.bind(this)} text={todo.text} />
           })
         }
       </div>
